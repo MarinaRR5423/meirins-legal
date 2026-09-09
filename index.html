@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -301,11 +301,18 @@
       </div>
     </section>
 
-    <!-- ── CTA BANNER ── -->
-    <section class="cta-banner">
-      <video class="cta-banner-bg" src="assets/Video_CTA_01.mp4" autoplay muted loop playsinline></video>
-      <a href="#" class="cta-banner-btn" onclick="smartDownload(event)" data-i18n="cta.download">Descarga Blumm</a>
+  </div><!-- /.page-frame -->
+
+    <!-- ── CTA SCROLL (flor que se abre/cierra con el scroll) ── -->
+    <section class="cta-scroll-wrapper" id="cta-scroll">
+      <div class="cta-scroll-sticky">
+        <div class="cta-loader" id="ctaLoader" data-i18n="cta.loading">Cargando…</div>
+        <canvas class="cta-scroll-canvas" id="ctaCanvas"></canvas>
+        <a href="#" class="cta-scroll-btn" id="ctaScrollBtn" onclick="smartDownload(event)" data-i18n="cta.download">Descarga Blumm</a>
+      </div>
     </section>
+
+  <div class="page-frame">
 
     <!-- ── QUIÉNES SOMOS ── -->
     <section class="team-card" id="equipo">
@@ -449,7 +456,7 @@
         'legal.terms.title': 'Términos de uso', 'legal.terms.text': 'Condiciones del servicio y aviso médico',
         'legal.support.title': 'Ayuda y soporte', 'legal.support.text': 'Preguntas frecuentes y contacto',
         'legal.delete.title': 'Eliminar cuenta', 'legal.delete.text': 'Cómo borrar tu cuenta y todos tus datos',
-        'cta.download': 'Descarga Blumm',
+        'cta.download': 'Descarga Blumm', 'cta.loading': 'Cargando…',
         'footer.copy': '© 2026 Blumm. Bienestar femenino sincronizado.',
         'footer.help': 'Ayuda', 'footer.privacy': 'Privacidad', 'footer.terms': 'Términos', 'footer.contact': '¿Necesitas ayuda?',
       },
@@ -505,7 +512,7 @@
         'legal.terms.title': 'Terms of Use', 'legal.terms.text': 'Service conditions and medical disclaimer',
         'legal.support.title': 'Help & Support', 'legal.support.text': 'Frequently asked questions and contact',
         'legal.delete.title': 'Delete account', 'legal.delete.text': 'How to delete your account and all your data',
-        'cta.download': 'Download Blumm',
+        'cta.download': 'Download Blumm', 'cta.loading': 'Loading…',
         'footer.copy': '© 2026 Blumm. Femme wellness, synchronised.',
         'footer.help': 'Help', 'footer.privacy': 'Privacy', 'footer.terms': 'Terms', 'footer.contact': 'Need help?',
       },
@@ -561,7 +568,7 @@
         'legal.terms.title': "Conditions d'utilisation", 'legal.terms.text': "Conditions du service et avertissement médical",
         'legal.support.title': 'Aide et support', 'legal.support.text': 'Questions fréquentes et contact',
         'legal.delete.title': 'Supprimer le compte', 'legal.delete.text': 'Comment supprimer ton compte et toutes tes données',
-        'cta.download': "Télécharge Blumm",
+        'cta.download': "Télécharge Blumm", 'cta.loading': 'Chargement…',
         'footer.copy': '© 2026 Blumm. Bien-être féminin synchronisé.',
         'footer.help': 'Aide', 'footer.privacy': 'Confidentialité', 'footer.terms': 'Conditions', 'footer.contact': "Besoin d'aide ?",
       }
@@ -610,6 +617,110 @@
     const browser = navigator.language?.slice(0,2);
     const initial = (saved && T[saved]) ? saved : (T[browser] ? browser : 'es');
     setLang(initial);
+  </script>
+
+  <!-- ── CTA scroll-scrub (flor animada por scroll) ── -->
+  <script>
+  (function () {
+    const FRAME_COUNT = 118;
+    const FRAME_PATH = (i) => `assets/cta-scroll/frames/frame_${String(i).padStart(3, '0')}.jpg`;
+    const BUTTON_REVEAL_START = 0.85; // progreso (0-1) al que empieza a aparecer el botón
+
+    const wrapper = document.getElementById('cta-scroll');
+    const sticky = wrapper.querySelector('.cta-scroll-sticky');
+    const canvas = document.getElementById('ctaCanvas');
+    const ctx = canvas.getContext('2d');
+    const button = document.getElementById('ctaScrollBtn');
+    const loader = document.getElementById('ctaLoader');
+
+    const images = new Array(FRAME_COUNT);
+    let loadedCount = 0;
+    let currentFrameIndex = -1;
+
+    function preloadFrames() {
+      for (let i = 1; i <= FRAME_COUNT; i++) {
+        const img = new Image();
+        img.onload = img.onerror = () => {
+          loadedCount++;
+          if (i === 1) drawFrame(img);
+          if (loadedCount === FRAME_COUNT) loader.classList.add('is-hidden');
+        };
+        img.src = FRAME_PATH(i);
+        images[i - 1] = img;
+      }
+    }
+
+    function resizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = sticky.clientWidth * dpr;
+      canvas.height = sticky.clientHeight * dpr;
+      if (currentFrameIndex >= 0 && images[currentFrameIndex] && images[currentFrameIndex].complete) {
+        drawFrame(images[currentFrameIndex]);
+      }
+    }
+
+    function drawFrame(img) {
+      if (!img || !img.naturalWidth) return;
+      const canvasRatio = canvas.width / canvas.height;
+      const imgRatio = img.naturalWidth / img.naturalHeight;
+      let sx, sy, sw, sh;
+      if (imgRatio > canvasRatio) {
+        sh = img.naturalHeight;
+        sw = sh * canvasRatio;
+        sx = (img.naturalWidth - sw) / 2;
+        sy = 0;
+      } else {
+        sw = img.naturalWidth;
+        sh = sw / canvasRatio;
+        sx = 0;
+        sy = (img.naturalHeight - sh) / 2;
+      }
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
+    }
+
+    function getScrollProgress() {
+      const rect = wrapper.getBoundingClientRect();
+      const total = wrapper.offsetHeight - window.innerHeight;
+      if (total <= 0) return 0;
+      const scrolled = Math.min(Math.max(-rect.top, 0), total);
+      return scrolled / total;
+    }
+
+    let ticking = false;
+
+    function onCtaScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const progress = getScrollProgress();
+
+        const frameIndex = Math.min(
+          FRAME_COUNT - 1,
+          Math.max(0, Math.floor(progress * (FRAME_COUNT - 1)))
+        );
+        if (frameIndex !== currentFrameIndex) {
+          currentFrameIndex = frameIndex;
+          const img = images[frameIndex];
+          if (img && img.complete) drawFrame(img);
+        }
+
+        if (progress >= BUTTON_REVEAL_START) {
+          button.classList.add('is-visible');
+        } else {
+          button.classList.remove('is-visible');
+        }
+
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onCtaScroll, { passive: true });
+    window.addEventListener('resize', resizeCanvas);
+
+    resizeCanvas();
+    preloadFrames();
+    onCtaScroll();
+  })();
   </script>
 </body>
 </html>
