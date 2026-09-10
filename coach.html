@@ -38,12 +38,7 @@
   <div id="auth-screen" class="coach-auth">
     <div class="coach-auth-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-        <a href="index.html" class="coach-back">← <span data-i18n="back">Volver</span></a>
-        <div style="display:flex;gap:6px;">
-          <button class="coach-lang-btn active" id="cbtn-es" onclick="setCoachLang('es')">ES</button>
-          <button class="coach-lang-btn" id="cbtn-en" onclick="setCoachLang('en')">EN</button>
-          <button class="coach-lang-btn" id="cbtn-fr" onclick="setCoachLang('fr')">FR</button>
-        </div>
+        <a href="index.html" class="coach-back">← Volver</a>
       </div>
       <div class="coach-logo">
         <span>🌙</span>
@@ -440,12 +435,15 @@
       en: { back:'Back', 'tab.login':'Log in', 'tab.register':'Create account', 'placeholder.password':'Password', 'placeholder.name':'Your name', 'placeholder.password6':'Password (min. 6 characters)', clients:'My clients', 'code.label':'Your trainer code', 'code.hint':'Your clients enter this code in the Blumm app to connect with you.', logout:'Log out', loading:'Loading…', 'empty.title':'No clients connected yet', 'empty.hint':'When a client enters your code in the Blumm app, they will appear here.', active:'active', noname:'No name', 'nav.clients':'My clients', 'nav.programs':'My programs', 'nav.exercises':'Exercises', 'btn.new-program':'+ New program', 'btn.new-exercise':'+ New exercise', 'empty.programs.title':'No programs yet', 'empty.programs.hint':'Create your first program with the button above.', 'picker.title':'Select exercise', 'picker.search':'Search exercise…', 'picker.empty':'No results' },
       fr: { back:'Retour', 'tab.login':'Se connecter', 'tab.register':'Créer un compte', 'placeholder.password':'Mot de passe', 'placeholder.name':'Ton prénom', 'placeholder.password6':'Mot de passe (min. 6 caractères)', clients:'Mes clientes', 'code.label':'Ton code coach', 'code.hint':'Tes clientes entrent ce code dans l\'app Blumm pour se connecter avec toi.', logout:'Se déconnecter', loading:'Chargement…', 'empty.title':'Aucune cliente connectée pour l\'instant', 'empty.hint':'Quand une cliente entre ton code dans l\'app Blumm, elle apparaîtra ici.', active:'active', noname:'Sans nom', 'nav.clients':'Mes clientes', 'nav.programs':'Mes programmes', 'nav.exercises':'Exercices', 'btn.new-program':'+ Nouveau programme', 'btn.new-exercise':'+ Nouvel exercice', 'empty.programs.title':'Aucun programme pour l\'instant', 'empty.programs.hint':'Crée ton premier programme avec le bouton ci-dessus.', 'picker.title':'Sélectionner un exercice', 'picker.search':'Rechercher un exercice…', 'picker.empty':'Aucun résultat' },
     };
-    let currentLang = localStorage.getItem('meirins_lang') || 'es';
+    // El panel de entrenadora está en español (la mayor parte de la interfaz
+    // ya lo estaba; el selector de idioma se ha retirado para evitar mezclas
+    // hasta tener una traducción completa). El objeto CT se conserva para una
+    // futura internacionalización.
+    let currentLang = 'es';
 
     function setCoachLang(lang) {
       if (!CT[lang]) return;
       currentLang = lang;
-      localStorage.setItem('meirins_lang', lang);
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const k = el.dataset.i18n;
         if (CT[lang][k]) el.textContent = CT[lang][k];
@@ -453,10 +451,6 @@
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const k = el.dataset.i18nPlaceholder;
         if (CT[lang][k]) el.placeholder = CT[lang][k];
-      });
-      ['es','en','fr'].forEach(l => {
-        const b = document.getElementById('cbtn-' + l);
-        if (b) b.classList.toggle('active', l === lang);
       });
     }
     setCoachLang(currentLang);

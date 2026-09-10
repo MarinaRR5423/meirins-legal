@@ -70,9 +70,11 @@
 <div id="lang-es" class="lang-section active">
 <section>
   <h2>Política de Privacidad</h2>
-  <p class="date">Última actualización: 15 de junio de 2026</p>
+  <p class="date">Última actualización: 10 de septiembre de 2026</p>
 
-  <p>Esta Política de Privacidad describe cómo <strong>Meirins</strong> ("nosotros", "la aplicación") recopila, usa y protege tu información personal cuando usas nuestra aplicación móvil.</p>
+  <p>Esta Política de Privacidad describe cómo <strong>Blumm</strong> ("nosotros", "la aplicación") recopila, usa y protege tu información personal cuando usas nuestra aplicación móvil.</p>
+
+  <p><strong>Responsable del tratamiento:</strong> el responsable del tratamiento es Marina Ruiz, empresaria individual (auto-entrepreneur) establecida en Francia, SIRET 95309322600017, con domicilio en 28 cours Balguerie Stuttenberg, 33300 Bordeaux (Francia). Contacto: <a href="mailto:info@blummapp.com">info@blummapp.com</a>.</p>
 
   <h3>1. Información que recopilamos</h3>
   <p>Para proporcionarte nuestros servicios, recopilamos:</p>
@@ -80,7 +82,7 @@
     <li><strong>Información de cuenta:</strong> dirección de correo electrónico y contraseña (cifrada).</li>
     <li><strong>Datos de salud:</strong> fecha de última menstruación, duración del ciclo, registro de sueño, peso, altura, edad, nivel de actividad y objetivos de bienestar que introduces voluntariamente.</li>
     <li><strong>Preferencias:</strong> idioma, objetivos nutricionales y restricciones dietéticas.</li>
-    <li><strong>Datos de uso:</strong> estadísticas anónimas sobre cómo interactúas con la app (sin identificación personal), mediante PostHog.</li>
+    <li><strong>Datos de uso:</strong> estadísticas de uso mediante PostHog. Solo se envía un identificador anónimo y eventos de uso; no enviamos tu email, tu nombre ni datos de salud a PostHog.</li>
   </ul>
 
   <h3>2. Cómo usamos tu información</h3>
@@ -98,12 +100,14 @@
   <ul>
     <li><strong>Supabase:</strong> proveedor de base de datos y autenticación. Tus datos se almacenan en servidores seguros en la UE.</li>
     <li><strong>PostHog:</strong> análisis de uso anónimo. No recibe datos de salud ni información identificable.</li>
+    <li><strong>Cloudflare:</strong> usamos Cloudflare Turnstile para proteger el inicio de sesión y el registro frente a bots. Procesa datos técnicos de la solicitud (como la dirección IP) únicamente con ese fin de seguridad.</li>
+    <li><strong>Apple App Store / Google Play:</strong> el procesamiento de los pagos de la suscripción lo gestionan Apple o Google, según la plataforma. No recibimos ni almacenamos los datos de tu tarjeta; solo el estado de la suscripción (activa, caducada, etc.).</li>
     <li><strong>Expo / EAS:</strong> plataforma de distribución de actualizaciones de la app.</li>
   </ul>
   <p>No compartimos tu información con terceros para fines publicitarios o comerciales.</p>
 
   <h3>5. Seguridad</h3>
-  <p>Usamos cifrado en tránsito (HTTPS/TLS) y en reposo para proteger tus datos. El acceso a tu cuenta está protegido por contraseña.</p>
+  <p>Usamos cifrado en tránsito (HTTPS/TLS) y en reposo para proteger tus datos. El acceso a tu cuenta está protegido por contraseña, y la sesión de autenticación se guarda en el almacenamiento cifrado del sistema operativo de tu dispositivo (Keychain en iOS, Keystore en Android).</p>
 
   <h3>6. Tus derechos (RGPD)</h3>
   <p>Si resides en el Espacio Económico Europeo, tienes derecho a:</p>
@@ -120,7 +124,7 @@
   <p>Conservamos tus datos mientras tu cuenta esté activa. Si eliminas tu cuenta, borramos todos tus datos en un plazo de 30 días.</p>
 
   <h3>8. Menores</h3>
-  <p>Meirins no está dirigida a menores de 13 años. Si eres menor de 13 años, no uses la aplicación.</p>
+  <p>Blumm no está dirigida a menores de 13 años. Si eres menor de 13 años, no uses la aplicación.</p>
 
   <h3>9. Cambios en esta política</h3>
   <p>Podemos actualizar esta política ocasionalmente. Te notificaremos de cambios significativos mediante la app.</p>
@@ -136,16 +140,18 @@
 <div id="lang-en" class="lang-section">
 <section>
   <h2>Privacy Policy</h2>
-  <p class="date">Last updated: June 15, 2026</p>
+  <p class="date">Last updated: September 10, 2026</p>
 
-  <p>This Privacy Policy describes how <strong>Meirins</strong> ("we", "the app") collects, uses, and protects your personal information when you use our mobile application.</p>
+  <p>This Privacy Policy describes how <strong>Blumm</strong> ("we", "the app") collects, uses, and protects your personal information when you use our mobile application.</p>
+
+  <p><strong>Data controller:</strong> the data controller is Marina Ruiz, sole trader (auto-entrepreneur) established in France, SIRET 95309322600017, registered address 28 cours Balguerie Stuttenberg, 33300 Bordeaux, France. Contact: <a href="mailto:info@blummapp.com">info@blummapp.com</a>.</p>
 
   <h3>1. Information We Collect</h3>
   <ul>
     <li><strong>Account information:</strong> email address and password (encrypted).</li>
     <li><strong>Health data:</strong> last period date, cycle length, sleep log, weight, height, age, activity level, and wellness goals you voluntarily enter.</li>
     <li><strong>Preferences:</strong> language, nutritional goals, and dietary restrictions.</li>
-    <li><strong>Usage data:</strong> anonymous statistics about how you interact with the app (no personal identification), via PostHog.</li>
+    <li><strong>Usage data:</strong> usage statistics via PostHog. Only an anonymous identifier and usage events are sent; we do not send your email, your name, or health data to PostHog.</li>
   </ul>
 
   <h3>2. How We Use Your Information</h3>
@@ -163,12 +169,14 @@
   <ul>
     <li><strong>Supabase:</strong> database and authentication provider. Your data is stored on secure servers in the EU.</li>
     <li><strong>PostHog:</strong> anonymous usage analytics. It does not receive health data or identifiable information.</li>
+    <li><strong>Cloudflare:</strong> we use Cloudflare Turnstile to protect login and sign-up against bots. It processes technical request data (such as your IP address) solely for that security purpose.</li>
+    <li><strong>Apple App Store / Google Play:</strong> subscription payment processing is handled by Apple or Google, depending on the platform. We do not receive or store your card details — only your subscription status (active, expired, etc.).</li>
     <li><strong>Expo / EAS:</strong> app update distribution platform.</li>
   </ul>
   <p>We do not share your information with third parties for advertising or commercial purposes.</p>
 
   <h3>5. Security</h3>
-  <p>We use encryption in transit (HTTPS/TLS) and at rest to protect your data.</p>
+  <p>We use encryption in transit (HTTPS/TLS) and at rest to protect your data. Your account is protected by a password, and your authentication session is stored in your device's operating-system encrypted storage (Keychain on iOS, Keystore on Android).</p>
 
   <h3>6. Your Rights (GDPR)</h3>
   <ul>
@@ -184,7 +192,7 @@
   <p>We retain your data while your account is active. If you delete your account, we erase all your data within 30 days.</p>
 
   <h3>8. Children</h3>
-  <p>Meirins is not directed at children under 13. If you are under 13, please do not use the app.</p>
+  <p>Blumm is not directed at children under 13. If you are under 13, please do not use the app.</p>
 
   <h3>9. Changes to This Policy</h3>
   <p>We may update this policy occasionally. We will notify you of significant changes through the app.</p>
@@ -200,16 +208,18 @@
 <div id="lang-fr" class="lang-section">
 <section>
   <h2>Politique de Confidentialité</h2>
-  <p class="date">Dernière mise à jour : 15 juin 2026</p>
+  <p class="date">Dernière mise à jour : 10 septembre 2026</p>
 
-  <p>Cette Politique de Confidentialité décrit comment <strong>Meirins</strong> ("nous", "l'application") collecte, utilise et protège vos informations personnelles lorsque vous utilisez notre application mobile.</p>
+  <p>Cette Politique de Confidentialité décrit comment <strong>Blumm</strong> ("nous", "l'application") collecte, utilise et protège vos informations personnelles lorsque vous utilisez notre application mobile.</p>
+
+  <p><strong>Responsable du traitement :</strong> le responsable du traitement est Marina Ruiz, entrepreneur individuel (auto-entrepreneur) établie en France, SIRET 95309322600017, dont le siège est 28 cours Balguerie Stuttenberg, 33300 Bordeaux (France). Contact : <a href="mailto:info@blummapp.com">info@blummapp.com</a>.</p>
 
   <h3>1. Informations que nous collectons</h3>
   <ul>
     <li><strong>Informations de compte :</strong> adresse e-mail et mot de passe (chiffré).</li>
     <li><strong>Données de santé :</strong> date des dernières règles, durée du cycle, journal de sommeil, poids, taille, âge, niveau d'activité et objectifs de bien-être.</li>
     <li><strong>Préférences :</strong> langue, objectifs nutritionnels et restrictions alimentaires.</li>
-    <li><strong>Données d'utilisation :</strong> statistiques anonymes via PostHog (sans identification personnelle).</li>
+    <li><strong>Données d'utilisation :</strong> statistiques d'utilisation via PostHog. Seuls un identifiant anonyme et des événements d'utilisation sont envoyés ; nous n'envoyons pas votre e-mail, votre nom ni vos données de santé à PostHog.</li>
   </ul>
 
   <h3>2. Comment nous utilisons vos informations</h3>
@@ -227,10 +237,15 @@
   <ul>
     <li><strong>Supabase :</strong> base de données et authentification — serveurs sécurisés dans l'UE.</li>
     <li><strong>PostHog :</strong> analyses d'utilisation anonymes.</li>
+    <li><strong>Cloudflare :</strong> nous utilisons Cloudflare Turnstile pour protéger la connexion et l'inscription contre les bots. Il traite des données techniques de la requête (comme l'adresse IP) uniquement à cette fin de sécurité.</li>
+    <li><strong>Apple App Store / Google Play :</strong> le traitement des paiements de l'abonnement est géré par Apple ou Google, selon la plateforme. Nous ne recevons ni ne stockons vos données de carte — uniquement l'état de votre abonnement (actif, expiré, etc.).</li>
     <li><strong>Expo / EAS :</strong> distribution des mises à jour de l'app.</li>
   </ul>
 
-  <h3>5. Vos droits (RGPD)</h3>
+  <h3>5. Sécurité</h3>
+  <p>Nous utilisons le chiffrement en transit (HTTPS/TLS) et au repos pour protéger vos données. Votre compte est protégé par un mot de passe, et votre session d'authentification est stockée dans le stockage chiffré du système d'exploitation de votre appareil (Keychain sur iOS, Keystore sur Android).</p>
+
+  <h3>6. Vos droits (RGPD)</h3>
   <ul>
     <li>Accéder à vos données personnelles.</li>
     <li>Corriger des données inexactes.</li>
@@ -239,11 +254,11 @@
     <li>Vous opposer au traitement de vos données.</li>
   </ul>
 
-  <h3>6. Conservation des données</h3>
+  <h3>7. Conservation des données</h3>
   <p>Nous conservons vos données tant que votre compte est actif. Suppression dans les 30 jours suivant la clôture du compte.</p>
 
-  <h3>7. Mineurs</h3>
-  <p>Meirins n'est pas destinée aux enfants de moins de 13 ans.</p>
+  <h3>8. Mineurs</h3>
+  <p>Blumm n'est pas destinée aux enfants de moins de 13 ans.</p>
 
   <div class="contact-box">
     <h3 style="margin-top:0">Contact</h3>
@@ -256,16 +271,18 @@
 <div id="lang-it" class="lang-section">
 <section>
   <h2>Informativa sulla Privacy</h2>
-  <p class="date">Ultimo aggiornamento: 15 giugno 2026</p>
+  <p class="date">Ultimo aggiornamento: 10 settembre 2026</p>
 
-  <p>Questa Informativa descrive come <strong>Meirins</strong> raccoglie, utilizza e protegge le tue informazioni personali.</p>
+  <p>Questa Informativa descrive come <strong>Blumm</strong> raccoglie, utilizza e protegge le tue informazioni personali.</p>
+
+  <p><strong>Titolare del trattamento:</strong> il titolare del trattamento è Marina Ruiz, ditta individuale (auto-entrepreneur) con sede in Francia, SIRET 95309322600017, indirizzo 28 cours Balguerie Stuttenberg, 33300 Bordeaux (Francia). Contatto: <a href="mailto:info@blummapp.com">info@blummapp.com</a>.</p>
 
   <h3>1. Informazioni che raccogliamo</h3>
   <ul>
     <li><strong>Account:</strong> indirizzo e-mail e password (cifrata).</li>
     <li><strong>Dati sulla salute:</strong> data dell'ultimo ciclo, durata del ciclo, sonno, peso, altezza, età, livello di attività e obiettivi di benessere.</li>
     <li><strong>Preferenze:</strong> lingua, obiettivi nutrizionali e restrizioni alimentari.</li>
-    <li><strong>Dati di utilizzo:</strong> statistiche anonime tramite PostHog (nessuna identificazione personale).</li>
+    <li><strong>Dati di utilizzo:</strong> statistiche di utilizzo tramite PostHog. Vengono inviati solo un identificatore anonimo ed eventi di utilizzo; non inviamo a PostHog la tua e-mail, il tuo nome o i dati sulla salute.</li>
   </ul>
 
   <h3>2. Come utilizziamo le tue informazioni</h3>
@@ -283,10 +300,15 @@
   <ul>
     <li><strong>Supabase:</strong> database e autenticazione — server sicuri nell'UE.</li>
     <li><strong>PostHog:</strong> analisi anonime.</li>
+    <li><strong>Cloudflare:</strong> utilizziamo Cloudflare Turnstile per proteggere l'accesso e la registrazione dai bot. Elabora dati tecnici della richiesta (come l'indirizzo IP) esclusivamente per questa finalità di sicurezza.</li>
+    <li><strong>Apple App Store / Google Play:</strong> l'elaborazione dei pagamenti dell'abbonamento è gestita da Apple o Google, a seconda della piattaforma. Non riceviamo né conserviamo i dati della tua carta — solo lo stato dell'abbonamento (attivo, scaduto, ecc.).</li>
     <li><strong>Expo / EAS:</strong> distribuzione aggiornamenti.</li>
   </ul>
 
-  <h3>5. I tuoi diritti (GDPR)</h3>
+  <h3>5. Sicurezza</h3>
+  <p>Utilizziamo la cifratura in transito (HTTPS/TLS) e a riposo per proteggere i tuoi dati. Il tuo account è protetto da una password e la sessione di autenticazione è conservata nell'archivio cifrato del sistema operativo del tuo dispositivo (Keychain su iOS, Keystore su Android).</p>
+
+  <h3>6. I tuoi diritti (GDPR)</h3>
   <ul>
     <li>Accedere ai tuoi dati personali.</li>
     <li>Correggere dati inesatti.</li>
@@ -295,11 +317,11 @@
     <li>Opporti al trattamento dei tuoi dati.</li>
   </ul>
 
-  <h3>6. Conservazione dei dati</h3>
+  <h3>7. Conservazione dei dati</h3>
   <p>Conserviamo i tuoi dati finché il tuo account è attivo. Cancellazione entro 30 giorni dalla chiusura dell'account.</p>
 
-  <h3>7. Minori</h3>
-  <p>Meirins non è destinata a bambini di età inferiore a 13 anni.</p>
+  <h3>8. Minori</h3>
+  <p>Blumm non è destinata a bambini di età inferiore a 13 anni.</p>
 
   <div class="contact-box">
     <h3 style="margin-top:0">Contatto</h3>
@@ -319,6 +341,7 @@
         <img src="blumm-logo-white.png" alt="Blumm" style="height:24px;width:auto;opacity:0.9;">
       </div>
       <p>© 2026 Blumm. Bienestar femenino sincronizado.</p>
+      <p class="small"><a href="privacy.html">Privacidad</a> · <a href="terms.html">Términos</a> · <a href="mentions-legales.html">Aviso legal</a></p>
       <p class="small">¿Necesitas ayuda? <a href="mailto:info@blummapp.com">info@blummapp.com</a></p>
     </div>
   </footer>
