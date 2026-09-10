@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "63UPM5C986.com.marina13.meirins",
+        "paths": ["/join", "/join/*"]
+      }
+    ]
+  }
+}

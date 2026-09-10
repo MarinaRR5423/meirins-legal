@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blumm · Únete gratis</title>
+  <meta name="description" content="Tu amiga te invita a probar Blumm gratis. Nutrición y entrenamiento adaptados a tu ciclo.">
+  <link rel="stylesheet" href="style.css?v=3">
+  <style>
+    .join-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      gap: 24px;
+    }
+    .join-logo { width: 72px; height: 72px; border-radius: 20px; }
+    .join-title { font-size: 28px; font-weight: 700; color: #0A0A0A; line-height: 1.2; }
+    .join-sub { font-size: 16px; color: #737373; line-height: 1.6; max-width: 320px; }
+    .join-btn {
+      display: inline-block;
+      background: #0A0A0A;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      margin-top: 8px;
+    }
+    .join-store { font-size: 13px; color: #A3A3A3; margin-top: 4px; }
+    .join-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+      background: #F5F5F5;
+      border-radius: 20px;
+      padding: 20px 24px;
+      max-width: 320px;
+      width: 100%;
+    }
+    .join-feature { font-size: 14px; color: #0A0A0A; display: flex; align-items: center; gap: 10px; }
+    .join-dot { width: 8px; height: 8px; border-radius: 50%; background: #0A0A0A; flex-shrink: 0; }
+  </style>
+</head>
+<body style="background:#fff;">
+
+  <div class="join-wrap">
+    <img src="blumm-logo.png" alt="Blumm" class="join-logo">
+
+    <div>
+      <div class="join-title">Prueba Blumm gratis<br>30 días</div>
+    </div>
+
+    <p class="join-sub">Nutrición y entrenamiento adaptados a cada fase de tu ciclo menstrual.</p>
+
+    <div class="join-features">
+      <div class="join-feature"><span class="join-dot"></span>Menús personalizados cada semana</div>
+      <div class="join-feature"><span class="join-dot"></span>Entrenos adaptados a tu fase</div>
+      <div class="join-feature"><span class="join-dot"></span>Seguimiento de ciclo inteligente</div>
+      <div class="join-feature"><span class="join-dot"></span>Sin planes genéricos</div>
+    </div>
+
+    <div>
+      <a id="mainBtn" href="#" class="join-btn">Descargar Blumm gratis</a>
+      <div class="join-store">Disponible en App Store · iOS</div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+
+    const APP_STORE_URL = 'https://apps.apple.com/app/blumm/id6746823813';
+    const SCHEME_URL = ref ? `meirins://join?ref=${ref}` : 'meirins://';
+
+    const btn = document.getElementById('mainBtn');
+
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (ref) localStorage.setItem('blumm_pending_ref', ref);
+
+      const timeout = setTimeout(() => {
+        window.location.href = APP_STORE_URL;
+      }, 1500);
+
+      window.location.href = SCHEME_URL;
+      window.addEventListener('blur', () => clearTimeout(timeout));
+    });
+  </script>
+
+</body>
+</html>
